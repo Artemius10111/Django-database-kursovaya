@@ -25,7 +25,7 @@ def client_form_view(request):
 
     return render(request, 'client_form.html', {'form': form})
 
-# Инструкция для views
+# Инструкция для views 1
 # При получении POST-запроса обработка формы происходит следующим образом:
 # 1. Извлекаем данные из формы.
 # 2. Используем метод get_or_create для получения или создания клиента по параметру "resultName".
