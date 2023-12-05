@@ -9,6 +9,8 @@
   </head>
   <body>
     <h2>Форма для создания услуги нотариальных услуг</h2>
+    <a href="{% url 'notarius_service_list' %}"><button>На главную страницу</button></a>
+    <h2></h2>
     <form method="post" action="{% url 'notarius_add_page' %}">
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Отправить</button>

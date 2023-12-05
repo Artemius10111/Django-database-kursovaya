@@ -6,7 +6,7 @@ class NotariusServiceForm(forms.Form):
     first_name = forms.CharField(label=_("Имя"), max_length=255)
     second_name = forms.CharField(label=_("Фамилия"), max_length=255)
     title = forms.CharField(label=_("Название"), max_length=255)
-    description = forms.CharField(label=_("Описание"), widget=forms.Textarea)
+    description = forms.CharField(label=_("Описание"), widget=forms.Textarea, required=False)
 
 # Инструкция для формы
 # Форма NotariusServiceForm содержит поля для ввода имени (first_name), фамилии (second_name),

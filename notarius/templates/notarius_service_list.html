@@ -1,0 +1,39 @@
+<!-- templates/notarius_service_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotariusService List</title>
+</head>
+<body>
+
+  <h2>Список услуг нотариуса</h2>
+  <a href="{% url 'notarius_add_page' %}"><button>Добавить нотариальную услугу</button></a>
+  <h2></h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Клиенты</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for service in services %}
+        <tr>
+          <td>{{ service.title }}</td>
+          <td>{{ service.description }}</td>
+          <td>
+            {% for client in service.clients.all %}
+              {{ client.result_name }}<br>
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>

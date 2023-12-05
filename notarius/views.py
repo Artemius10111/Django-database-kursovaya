@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Client, NotariusService
 from .forms import NotariusServiceForm
+
+def notarius_service_list(request):
+    services = NotariusService.objects.all()
+    return render(request, 'notarius_service_list.html', {'services': services})
 
 def client_form_view(request):
     if request.method == 'POST':
@@ -15,11 +19,16 @@ def client_form_view(request):
             client, created = Client.objects.get_or_create(result_name=first_name + ' ' + second_name, first_name=first_name, second_name=second_name)
 
             # Используем get_or_create для получения или создания услуги
-            notarius_service, _ = NotariusService.objects.get_or_create(title=title, description=description)
+            notarius_service, created = NotariusService.objects.get_or_create(title=title)
+
 
             # Если услуга уже существует, добавляем клиента в связь ManyToMany
             notarius_service.clients.add(client)
 
+            notarius_service.description = description
+            notarius_service.save()
+            
+            return redirect('notarius_service_list')
     else:
         form = NotariusServiceForm()
 

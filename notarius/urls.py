@@ -1,8 +1,8 @@
 # urls.py
 from django.urls import path
-from .views import client_form_view
+from .views import client_form_view, notarius_service_list
 
 urlpatterns = [
     path('notarius_add/', client_form_view, name='notarius_add_page'),
-    # Другие URL-маршруты вашего приложения
+    path('', notarius_service_list, name='notarius_service_list'),
 ]
