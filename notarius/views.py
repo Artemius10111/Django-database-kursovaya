@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from users.models import User
 from .models import Client, NotariusService
@@ -9,6 +11,10 @@ def notarius_service_list(request):
         return redirect('login')
     services = NotariusService.objects.all()
     return render(request, 'notarius_service_list.html', {'services': services})
+
+def delete_service(request, pk):
+    NotariusService.objects.filter(id=pk).delete()
+    return HttpResponseRedirect(redirect_to=reverse('notarius_service_list'))
 
 def client_form_view(request):
     if (not request.user.is_authenticated):

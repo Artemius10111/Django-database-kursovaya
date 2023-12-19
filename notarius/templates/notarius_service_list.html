@@ -1,3 +1,4 @@
+{% load static %}
 <!-- templates/notarius_service_list.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotariusService List</title>
+    <script type="text/javascript" src="{% static '/js/test.js' %}"></script>
 </head>
 <body>
 
@@ -36,6 +38,15 @@
           </td>
           <td>{{ service.author }}</td>
           <td>{{ service.date }}</td>
+          <td><button>✓</button></td>
+          <td>
+            <form action="{% url 'delete_service' service.id %}"  method="POST">
+            {% csrf_token %}
+            <button name="service_id" type="submit" value="{{ service.id }}">
+              X
+            </button>
+          </form>
+        </td>
         </tr>
       {% endfor %}
     </tbody>
