@@ -24,6 +24,7 @@ class SignUpView(generic.CreateView):
     success_url = reverse_lazy("SignUp")
     template_name = 'account/registration.html'
 
+
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect('notarius_service_list')
