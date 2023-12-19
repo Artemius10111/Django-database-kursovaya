@@ -33,13 +33,17 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'notarius.apps.NotariusConfig',
     'users.apps.UsersConfig',
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+LOGIN_URL = "/users/login/"
+
+LOGIN_REDIRECT_URL = "notarius_service_list"
 
 AUTH_USER_MODEL = 'users.User'
 

@@ -13,7 +13,7 @@ class LoginView(django_views.LoginView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('profile', request.user.id)
+            return redirect('notarius_service_list')
         else:
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form': form})
@@ -26,7 +26,7 @@ class SignUpView(generic.CreateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('profile', request.user.id)
+            return redirect('notarius_service_list')
         else:
             form = self.form_class(initial=self.initial)
             return render(request, self.template_name, {'form': form})
@@ -39,3 +39,6 @@ class SignUpView(generic.CreateView):
                 return redirect('login')
             else:
                 return redirect('login')
+
+class LogoutView(django_views.LogoutView):
+    template_name = 'account/logout.html'

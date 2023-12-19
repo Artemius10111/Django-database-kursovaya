@@ -3,6 +3,8 @@ from .models import Client, NotariusService
 from .forms import NotariusServiceForm
 
 def notarius_service_list(request):
+    if (not request.user.is_authenticated):
+        return redirect('login')
     services = NotariusService.objects.all()
     return render(request, 'notarius_service_list.html', {'services': services})
 

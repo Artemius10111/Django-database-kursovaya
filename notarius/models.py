@@ -1,6 +1,11 @@
 # models.py
+import datetime
+
 from django.db import models
 import uuid
+
+from users.models import User
+
 
 class Client(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -25,8 +30,8 @@ class NotariusService(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     clients = models.ManyToManyField(Client)
-    author = models.ForeignKey(Client, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f'Нотариальная услуга {self.title}'

@@ -10,7 +10,9 @@
 <body>
 
   <h2>Список услуг нотариуса</h2>
+  <h2>Здравствуйте, {{ request.user.username }}!</h2>
   <a href="{% url 'notarius_add_page' %}"><button>Добавить нотариальную услугу</button></a>
+  <a href="{% url 'logout' %}">Logout</a>
   <h2></h2>
   <table border="1">
     <thead>
