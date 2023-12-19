@@ -20,6 +20,8 @@
         <th>Название</th>
         <th>Описание</th>
         <th>Клиенты</th>
+        <th>Нотариус, который ввел данные</th>
+        <th>Дата оказания услуги</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +34,8 @@
               {{ client.result_name }}<br>
             {% endfor %}
           </td>
+          <td>{{ service.author }}</td>
+          <td>{{ service.date }}</td>
         </tr>
       {% endfor %}
     </tbody>

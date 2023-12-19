@@ -30,8 +30,8 @@ class NotariusService(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     clients = models.ManyToManyField(Client)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    date = models.DateTimeField(auto_now_add=True, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'Нотариальная услуга {self.title}'
